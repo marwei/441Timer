@@ -42,13 +42,18 @@ int tenMinutes = 600;
     }
 }
 
-
-- (void) updateCounter {
-    [self updateBackgroundColor];
+- (void)updateLabelText {
     int minutes = (tenMinutes % 3600) / 60;
     int seconds = (tenMinutes %3600) % 60;
     _timerLabel.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
-    tenMinutes--;
+}
+
+
+- (void)updateCounter {
+    [self updateBackgroundColor];
+    [self updateLabelText];
+    if (tenMinutes >= 0) tenMinutes--;
+    else tenMinutes++;
     
 }
 
