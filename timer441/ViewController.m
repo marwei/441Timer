@@ -32,8 +32,7 @@ int tenMinutes = 600;
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void) updateCounter {
+- (void)updateBackgroundColor {
     if (tenMinutes >= 300) {
         self.view.backgroundColor = [UIColor greenColor];
     } else if (tenMinutes >= 120) {
@@ -41,6 +40,11 @@ int tenMinutes = 600;
     } else {
         self.view.backgroundColor = [UIColor redColor];
     }
+}
+
+
+- (void) updateCounter {
+    [self updateBackgroundColor];
     int minutes = (tenMinutes % 3600) / 60;
     int seconds = (tenMinutes %3600) % 60;
     _timerLabel.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
